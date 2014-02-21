@@ -1,0 +1,104 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoFramework.Core", "NoFramework.Core\NoFramework.Core.csproj", "{6CC5654E-8904-4065-9596-FADD36576BD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoFramework.Droid", "NoFramework.Droid\NoFramework.Droid.csproj", "{847A7668-9604-4289-9033-9C20A89467C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoFramework.iOS", "NoFramework.iOS\NoFramework.iOS.csproj", "{3D678718-50CF-406D-BC98-864C7E172F72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{3D678718-50CF-406D-BC98-864C7E172F72}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{3D678718-50CF-406D-BC98-864C7E172F72}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Debug|iPhone.Build.0 = Debug|iPhone
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Release|iPhone.ActiveCfg = Release|iPhone
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Release|iPhone.Build.0 = Release|iPhone
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{3D678718-50CF-406D-BC98-864C7E172F72}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Release|iPhone.Build.0 = Release|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{6CC5654E-8904-4065-9596-FADD36576BD0}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Release|iPhone.Build.0 = Release|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{847A7668-9604-4289-9033-9C20A89467C1}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = NoFramework.Droid\NoFramework.Droid.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = VisualStudio
+		$1.inheritsScope = text/plain
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.IndentSwitchBody = True
+		$2.AnonymousMethodBraceStyle = NextLine
+		$2.PropertyBraceStyle = NextLine
+		$2.PropertyGetBraceStyle = NextLine
+		$2.PropertySetBraceStyle = NextLine
+		$2.EventBraceStyle = NextLine
+		$2.EventAddBraceStyle = NextLine
+		$2.EventRemoveBraceStyle = NextLine
+		$2.StatementBraceStyle = NextLine
+		$2.ElseNewLinePlacement = NewLine
+		$2.CatchNewLinePlacement = NewLine
+		$2.FinallyNewLinePlacement = NewLine
+		$2.WhileNewLinePlacement = DoNotCare
+		$2.ArrayInitializerWrapping = DoNotChange
+		$2.ArrayInitializerBraceStyle = NextLine
+		$2.BeforeMethodDeclarationParentheses = False
+		$2.BeforeMethodCallParentheses = False
+		$2.BeforeConstructorDeclarationParentheses = False
+		$2.BeforeDelegateDeclarationParentheses = False
+		$2.NewParentheses = False
+		$2.SpacesBeforeBrackets = False
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="NoFramework.Core/INewbie.cs">
+    <Files>
+      <File FileName="NoFramework.Core/INewbie.cs" Line="8" Column="6" />
+      <File FileName="NoFramework.Core/Expert.cs" Line="1" Column="1" />
+      <File FileName="NoFramework.Core/Problem.cs" Line="1" Column="1" />
+      <File FileName="NoFramework.Droid/NewbieActivity.cs" Line="1" Column="1" />
+      <File FileName="NoFramework.Core/IEnvironment.cs" Line="5" Column="25" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.NoFramework.Droid MonoForAntroid.PreferredDevice="Nexus 4" AndroidDeviceId-Debug="192.168.56.101:5555" />
+</Properties>
