@@ -1,11 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="NoFramework.Droid/NewbieActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NoFramework.Core/Expert.cs">
     <Files>
-      <File FileName="NoFramework.Droid/NewbieActivity.cs" Line="55" Column="1" />
-      <File FileName="NoFramework.Core/Expert.cs" Line="32" Column="43" />
-      <File FileName="NoFramework.Core/INewbie.cs" Line="7" Column="31" />
-      <File FileName="../../../../Library/Frameworks/Mono.framework/External/xbuild/Xamarin/Android/Xamarin.Android.Common.targets" Line="25" Column="114" />
+      <File FileName="NoFramework.Droid/NewbieActivity.cs" Line="57" Column="9" />
+      <File FileName="NoFramework.Core/Expert.cs" Line="31" Column="10" />
+      <File FileName="NoFramework.Core/INewbie.cs" Line="13" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

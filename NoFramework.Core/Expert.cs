@@ -44,7 +44,7 @@ namespace NoFramework.Core
 
         public Expert (INewbie view = null)
 		{
-            this.view = view;
+            this.view = view; // or grab an instance from Ioc container
 
             var problemsWorthSolving = this.ProvideHelpCommand
                 .Where(_ => this.Outcome == Problem.OutOfMemory || this.Outcome == Problem.StackOverflow)
