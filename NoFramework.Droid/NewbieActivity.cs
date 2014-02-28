@@ -7,17 +7,15 @@ using Android.Widget;
 using Android.OS;
 using NoFramework.Core;
 using System.Linq;
+using ReactiveUI.Android;
+using ReactiveUI;
 
 namespace NoFramework.Droid
 {
 	[Activity (Label = "NoFramework.Droid", MainLauncher = true)]
-    public class NewbieActivity : Activity, INewbie
+    public class NewbieActivity : ReactiveActivity, IViewFor<Expert>, INewbie
 	{
-        private Guid programExecutionSignature = Guid.Empty;
-
         private readonly int maxProblemValue = Enum.GetValues(typeof(Problem)).Cast<int>().Max();
-
-		private Expert expert;
 
         Button btnAskForHelp;
 
@@ -37,91 +35,58 @@ namespace NoFramework.Droid
             SetContentView(Resource.Layout.Main);
 
             // locate all controls
-            btnAskForHelp = FindViewById<Button>(Resource.Id.btnAskForHelp);
-            btnExeProgram = FindViewById<Button>(Resource.Id.btnExeProgram);
-            txtStatus = FindViewById<TextView>(Resource.Id.txtStatus);
-            txtOutcome = FindViewById<TextView>(Resource.Id.txtOutcome);
-            txtDonutOwed = FindViewById<TextView>(Resource.Id.txtDonutOwed);
+            this.btnAskForHelp = FindViewById<Button>(Resource.Id.btnAskForHelp);
+            this.btnExeProgram = FindViewById<Button>(Resource.Id.btnExeProgram);
+            this.txtStatus = FindViewById<TextView>(Resource.Id.txtStatus);
+            this.txtOutcome = FindViewById<TextView>(Resource.Id.txtOutcome);
+            this.txtDonutOwed = FindViewById<TextView>(Resource.Id.txtDonutOwed);
 
             // irrespective of debugging skills, newbie at least know how to run program
-            this.btnExeProgram.Click += (sender, e) => this.ExecuteProgram("Newbie");
+            this.btnExeProgram.Click += (sender, e) => this.ExecuteProgram();
 
             // instantiate concrete class as it's rare we pair a newbie with multiple expert. But say if there's a team of 
             // experts helping the same newbie, then we should define an interface for the experts.
-            this.expert = new Expert(this);
+            this.ViewModel = new Expert(this);
 
-            // [C] newbie should at least know how to notify expert and provide
-            btnAskForHelp.Click += (sender, e) => this.expert.ProvideHelp();
+            this.Bind(this.ViewModel, vm => vm.DonutOwed, v => v.txtDonutOwed.Text);
+            this.Bind(this.ViewModel, vm => vm.Status, v => v.txtStatus.Text);
+            this.Bind(this.ViewModel, vm => vm.Outcome, v => v.txtOutcome.Text);
+
+            this.BindCommand(this.ViewModel, vm => vm.ProvideHelpCommand, view => view.btnAskForHelp);
         }
+
+
+        #region IViewFor implementation
+
+        public Expert ViewModel { get; set; }
+
+        object IViewFor.ViewModel
+        {
+            get { return this.ViewModel; }
+            set { ViewModel = (Expert)value; }
+        }
+
+        #endregion
 
         #region INewbie implementation
 
-        public void ExecuteProgram(string runner) 
+        public void ExecuteProgram() 
         {
-            Toast.MakeText(this, runner + " - running program", ToastLength.Short).Show();
-
             // always encounter an issue
             Random r = new Random();
-            this.Outcome = (Problem)r.Next(maxProblemValue);
+            this.txtOutcome.Text = ((Problem)r.Next(maxProblemValue)).ToString();
 
-            this.programExecutionSignature = Guid.NewGuid();
+            this.ViewModel.Signature = Guid.NewGuid();
         }
 
-        #endregion
-
-        #region IEnvironment implementation
-
-        public string Status { get { return this.txtStatus.Text; } set { this.txtStatus.Text = value; } }
-
-        public Problem Outcome 
-        { 
-            get
-            { 
-                Problem ret;
-                if (!Enum.TryParse<Problem>(this.txtOutcome.Text, out ret))
-                {
-                    ret = Problem.Unknown;
-                }
-
-                return ret;
-            }
-
-            set 
-            { 
-                this.txtOutcome.Text = value.ToString(); 
-            } 
-        }
-
-        public int DonutOwed 
-        { 
-            get 
-            {
-                int ret;
-                if (!Int32.TryParse(this.txtDonutOwed.Text, out ret))
-                {
-                    ret = 0;
-                }
-
-                return ret;
-            }
-
-            set 
-            {
-                this.txtDonutOwed.Text = value.ToString();
-            }
-        }
-
-
-        public Guid ExecutionSignature
+        public void ShowMessage(string msg) 
         {
-            get
-            {
-                return this.programExecutionSignature;
-            }
-        }        
+            Toast.MakeText(this, msg, ToastLength.Short).Show();
+        }
 
         #endregion
-    }
+
+      }
 }
 
 

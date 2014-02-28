@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Akavache.Http</name>
+    </assembly>
+    <members>
+        <member name="M:Akavache.Http.HttpSchedulerExtensions.ScheduleAll(Akavache.Http.IHttpScheduler,System.Action{Akavache.Http.IHttpScheduler})">
+            <summary>
+            This method allows you to schedule several requests in a group,
+            and cancel them all at once if necessary.
+            </summary>
+            <param name="block">Use the provided IHttpScheduler to schedule
+            requests. All requests scheduled will be canceled with the same
+            IDisposable returned.</param>
+            <returns>A value that when disposed, cancels all requests made in
+            the block.</returns>
+        </member>
+        <member name="T:Akavache.Http.Priorities">
+            <summary>
+            This enumeration defines the default base priorities associated with the
+            different NetCache instances
+            </summary>
+        </member>
+        <member name="T:Akavache.Http.IHttpScheduler">
+            <summary>
+            This interface defines a cache for HTTP Requests, it is the
+            Akavache.Http analog to IBlobCache.
+            </summary>
+        </member>
+        <member name="M:Akavache.Http.IHttpScheduler.Schedule(System.Net.Http.HttpRequestMessage,System.Int32,System.Func{System.Net.Http.HttpResponseMessage,System.Boolean})">
+            <summary>
+            Schedules an HTTP request to be sent and returns the result along
+            with the content.
+            </summary>
+            <param name="request">The HTTP request to schedule.</param>
+            <param name="priority">The absolute priority to schedule this
+            request. Higher priorities get scheduled before lower
+            priorities.</param>
+            <param name="shouldFetchContent">This Func is called when the
+            Headers of the HTTP request are first recieved. If Func returns
+            false, the operation should be cancelled and the body should not
+            be returned.</param>
+            <returns>A Future result representing the HTTP response as well as
+            the body of the message.</returns>
+        </member>
+        <member name="M:Akavache.Http.IHttpScheduler.CancelAll">
+            <summary>
+            Cancel all outstanding requests that are in-flight.
+            </summary>
+        </member>
+        <member name="P:Akavache.Http.IHttpScheduler.Client">
+            <summary>
+            The HttpClient instance to use to send requests.
+            </summary>
+        </member>
+        <member name="T:Akavache.Http.ISpeculativeHttpScheduler">
+            <summary>
+            Speculative HTTP schedulers only allow a certain number of bytes to be
+            read before cancelling all future requests. This is designed for
+            reading data that may or may not be used by the user later, in order
+            to improve response times should the user later request the data.
+            </summary>
+        </member>
+        <member name="M:Akavache.Http.ISpeculativeHttpScheduler.ResetLimit(System.Nullable{System.Int64})">
+            <summary>
+            Resets the total limit of bytes to read. This is usually called
+            when the app resumes from suspend, to indicate that we should
+            fetch another set of data.
+            </summary>
+            <param name="maxBytesToRead">
+            </param>
+        </member>
+        <member name="P:Akavache.Http.NetCache.Speculative">
+            <summary>
+            Speculative HTTP schedulers only allow a certain number of bytes to be
+            read before cancelling all future requests. This is designed for
+            reading data that may or may not be used by the user later, in order
+            to improve response times should the user later request the data.
+            </summary>
+        </member>
+        <member name="P:Akavache.Http.NetCache.UserInitiated">
+            <summary>
+            This scheduler should be used for requests initiated by a user
+            action such as clicking an item, they have the highest priority.
+            </summary>
+        </member>
+        <member name="P:Akavache.Http.NetCache.Background">
+            <summary>
+            This scheduler should be used for requests initiated in the
+            background, and are scheduled at a lower priority.
+            </summary>
+        </member>
+    </members>
+</doc>

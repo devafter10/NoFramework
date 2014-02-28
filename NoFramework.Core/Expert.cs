@@ -1,80 +1,110 @@
 ﻿using System;
 using System.Collections.Generic;
+using ReactiveUI;
+using System.Reactive.Linq;
 
 namespace NoFramework.Core
 {
-	public class Expert
+    public class Expert : ReactiveObject
 	{
         HashSet<Guid> helpOffered = new HashSet<Guid>();
 
-        INewbie newbie;
+        private ReactiveCommand provideHelpCommand = new ReactiveCommand();
+        public ReactiveCommand ProvideHelpCommand { get { return this.provideHelpCommand; } }
 
-        private const string expertName = "Expert";
+        private Guid signature;
+        public Guid Signature 
+        {
+            get { return this.signature; }
+            set { this.RaiseAndSetIfChanged(ref this.signature, value); }
+        }
 
-        public Expert (INewbie newbie)
+        private string status;
+        public string Status 
+        {
+            get { return this.status; }
+            set { this.RaiseAndSetIfChanged(ref this.status, value); }
+        }
+
+        private int donutOwed;
+        public int DonutOwed 
+        {
+            get { return this.donutOwed; }
+            set { this.RaiseAndSetIfChanged(ref this.donutOwed, value); }
+        }
+
+        private Problem outcome;
+        public Problem Outcome
+        {
+            get { return this.outcome; }
+            set { this.RaiseAndSetIfChanged(ref this.outcome, value); }
+        }
+
+        private INewbie view;
+
+        public Expert (INewbie view = null)
 		{
-            this.newbie = newbie;
+            this.view = view;
+
+            var problemsWorthSolving = this.ProvideHelpCommand
+                .Where(_ => this.Outcome == Problem.OutOfMemory || this.Outcome == Problem.StackOverflow)
+                .Where(_ => !this.helpOffered.Contains(this.Signature));
+
+            var problemsWeCanSolve = problemsWorthSolving
+                .Where(_ => this.DonutOwed < 10)
+                .Subscribe(_ => this.ProvideHelp());
+
+            var problemsWeCanSolveButDoNotWantTo = problemsWorthSolving
+                .Where(_ => this.DonutOwed >= 10)
+                .Subscribe(_ => this.ProvideNoHelp());
 		}
+
+        public void ProvideNoHelp() 
+        {
+            this.Status = "Sorry don't feel like solving your problem";
+
+            // record the signature so stay DRY
+            helpOffered.Add(this.Signature);
+
+            this.view.ShowMessage("Get Lost Deadbeat");
+        }
 
         public void ProvideHelp() 
         {
             // get program exe state
-            var owed = newbie.DonutOwed;
+            var owed = this.DonutOwed;
 
-            // dead beat, ignore
-            if (owed >= 10)
-            {
-                newbie.Status = "Sorry I don't know, I'll run the program for you again";
-                newbie.ExecuteProgram(expertName);
-
-                return;
-            }
-
-            if (this.helpOffered.Contains(newbie.ExecutionSignature))
-            {
-                newbie.Status = "Problem should be solved already. Let's run it again";
-                newbie.ExecuteProgram(expertName);
-
-                return;
-            }
-
-            var problem = newbie.Outcome;
+            string newStatus = string.Empty;
+            int donutDelta = 0;
+            var problem = this.Outcome;
             switch (problem)
             {
-                case Problem.ArrayOutOfBound:
-                    newbie.Status = "Check array accessor";
-                    owed = owed + 10;
-                    break;
-                
-                case Problem.NullReferenceException:
-                    newbie.Status = "Do null check";
-                    owed = owed + 5;
-                    break;
-
                 case Problem.OutOfMemory:
-                    newbie.Status = "Call dispose whenever possible";
-                    owed = owed + 2;
+                    newStatus = "Call dispose whenever possible";
+                    donutDelta = 2;
                     break;
 
                 case Problem.StackOverflow:
-                    newbie.Status = "Check your recursion algorithm";
-                    owed = owed + 2;
+                    newStatus = "Check your recursion algorithm";
+                    donutDelta = 4;
                     break;
 
-                case Problem.Unknown:
-                case Problem.NoProblem:
-                    newbie.Status = "Not a clue";
+                default:
+                    newStatus = "This Shouldn't happen";
+                    donutDelta = 0;
                     break;
             }
+
+            this.Status = newStatus;
+            this.DonutOwed = this.DonutOwed + donutDelta;
 
             // update donut owed to the model
             // update model to persist the donut owed. The model could then persist the info to Database or Cloud.
 
-            // update newbie on the donut owed
-            newbie.DonutOwed = owed;
-
             // record the signature so stay DRY
-            helpOffered.Add(newbie.ExecutionSignature);
+            helpOffered.Add(this.Signature);
+
+            this.view.ShowMessage("Help Provided");
         }
 	}
 }

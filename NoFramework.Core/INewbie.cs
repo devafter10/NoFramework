@@ -2,9 +2,11 @@
 
 namespace NoFramework.Core
 {
-    public interface INewbie : IEnvironment
+    public interface INewbie
     {
-        void ExecuteProgram(string name);
+        void ExecuteProgram();
+
+        void ShowMessage(string msg);
     }
 }
 
